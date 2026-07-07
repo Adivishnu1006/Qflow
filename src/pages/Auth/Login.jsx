@@ -43,16 +43,79 @@
 // export default Login;
 
 
+// import Input from "@/components/UI/Input";
+// import Button from "@/components/UI/Button";
+// import Card from "@/components/UI/Card";
+
+// function Login() {
+//   return (
+//     <div className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center gap-6 p-6">
+
+//       <Input
+//         label="Email"
+//         type="email"
+//         placeholder="Enter your email"
+//         required
+//       />
+
+//       <Input
+//         label="Password"
+//         type="password"
+//         placeholder="Enter your password"
+//         required
+//       />
+
+//       <Input
+//         label="Phone Number"
+//         placeholder="+91 9876543210"
+//         helperText="We'll never share your phone number."
+//       />
+
+//       <Input
+//         label="Email"
+//         placeholder="Wrong email"
+//         error="Please enter a valid email address."
+//       />
+
+//       <Button fullWidth>
+//         Sign In
+//       </Button>
+
+//       <Card>
+
+// <h1>Hello</h1>
+
+// </Card>
+  
+
+//     </div>
+        
+//   );
+// }
+
+// export default Login;
+
+
+import AuthCard from "@/components/UI/AuthCard";
 import Input from "@/components/UI/Input";
 import Button from "@/components/UI/Button";
 
 function Login() {
   return (
-    <div className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center gap-6 p-6">
-
+    <AuthCard
+      title="Welcome Back"
+      subtitle="Sign in to continue using QFlow"
+      footer={
+        <p className="text-center text-sm text-slate-500">
+          Don't have an account?{" "}
+          <span className="font-semibold text-blue-600">
+            Create Account
+          </span>
+        </p>
+      }
+    >
       <Input
         label="Email"
-        type="email"
         placeholder="Enter your email"
         required
       />
@@ -64,23 +127,10 @@ function Login() {
         required
       />
 
-      <Input
-        label="Phone Number"
-        placeholder="+91 9876543210"
-        helperText="We'll never share your phone number."
-      />
-
-      <Input
-        label="Email"
-        placeholder="Wrong email"
-        error="Please enter a valid email address."
-      />
-
       <Button fullWidth>
         Sign In
       </Button>
-
-    </div>
+    </AuthCard>
   );
 }
 
