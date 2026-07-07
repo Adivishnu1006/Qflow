@@ -10,30 +10,74 @@
 
 // export default Login;
 
+// import Button from "@/components/UI/Button";
+
+// function Login() {
+//   return (
+//     <div className="flex min-h-screen items-center justify-center gap-4">
+
+//       <Button>
+//         Primary
+//       </Button>
+
+//       <Button variant="secondary">
+//         Secondary
+//       </Button>
+
+//       <Button variant="outline">
+//         Outline
+//       </Button>
+
+//       <Button variant="ghost">
+//         Ghost
+//       </Button>
+
+//       <Button variant="danger">
+//         Delete
+//       </Button>
+
+//     </div>
+//   );
+// }
+
+// export default Login;
+
+
+import Input from "@/components/UI/Input";
 import Button from "@/components/UI/Button";
 
 function Login() {
   return (
-    <div className="flex min-h-screen items-center justify-center gap-4">
+    <div className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center gap-6 p-6">
 
-      <Button>
-        Primary
-      </Button>
+      <Input
+        label="Email"
+        type="email"
+        placeholder="Enter your email"
+        required
+      />
 
-      <Button variant="secondary">
-        Secondary
-      </Button>
+      <Input
+        label="Password"
+        type="password"
+        placeholder="Enter your password"
+        required
+      />
 
-      <Button variant="outline">
-        Outline
-      </Button>
+      <Input
+        label="Phone Number"
+        placeholder="+91 9876543210"
+        helperText="We'll never share your phone number."
+      />
 
-      <Button variant="ghost">
-        Ghost
-      </Button>
+      <Input
+        label="Email"
+        placeholder="Wrong email"
+        error="Please enter a valid email address."
+      />
 
-      <Button variant="danger">
-        Delete
+      <Button fullWidth>
+        Sign In
       </Button>
 
     </div>
