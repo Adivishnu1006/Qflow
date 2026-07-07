@@ -1,4 +1,4 @@
-import PhoneMockup from '@/components/PhoneMockup/PhoneMockup.jsx';
+import PhoneMockup from '@/components/Landing/PhoneMockup/PhoneMockup.jsx';
 function Hero() {
   const industries = [
     "Hospitals",

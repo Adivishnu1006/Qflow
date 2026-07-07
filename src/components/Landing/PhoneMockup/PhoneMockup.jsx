@@ -1,4 +1,4 @@
-import FloatingCard from '@/components/FloatingCard/FloatingCard.jsx';
+import FloatingCard from '@/components/Landing/FloatingCard/FloatingCard.jsx';
 
 function PhoneMockup() {
   return (
