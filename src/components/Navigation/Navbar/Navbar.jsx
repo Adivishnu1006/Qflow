@@ -20,18 +20,18 @@ function cn(...classes) {
 
 function Logo() {
   return (
-    <a
-      href="/"
+    <Link
+      to={ROUTES.HOME}
       aria-label="QFlow home"
       className="group inline-flex items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
     >
       <span className="flex size-10 items-center justify-center rounded-full bg-blue-600 text-lg font-black tracking-normal text-white shadow-sm transition-transform duration-200 group-hover:scale-105">
         Q
       </span>
-      <span className="text-xl font-bold tracking-normal text-slate-950"><Link to={ROUTES.HOME}>
+      <span className="text-xl font-bold tracking-normal text-slate-950">
   QFlow
-</Link></span>
-    </a>
+</span></Link>
+    
   );
 }
 
@@ -61,32 +61,34 @@ function NavLinks({ onNavigate }) {
 function NavbarActions({ className = '' }) {
   return (
     <div className={cn('flex items-center gap-3', className)}>
-      <motion.a
-        href="#customer-login"
-        className={cn(
-          buttonBase,
-          'border border-slate-300 bg-white/40 text-slate-800 hover:border-blue-300 hover:bg-blue-50/80 hover:text-blue-700',
-        )}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.98 }}
-      >
-        <Link to={ROUTES.LOGIN}>
-  Sign In
-</Link>
-      </motion.a>
-      <motion.a
-        href="#register-organization"
+   <motion.div
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.98 }}
+>
+  <Link
+    to={ROUTES.LOGIN}
+    className={cn(
+      buttonBase,
+      "border border-slate-300 bg-white/40 text-slate-800 hover:border-blue-300 hover:bg-blue-50/80 hover:text-blue-700"
+    )}
+  >
+    Sign In
+  </Link>
+</motion.div>
+
+      <motion.div
+        
         className={cn(
           buttonBase,
           'bg-blue-600 text-white shadow-sm shadow-blue-600/20 hover:bg-blue-700',
         )}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.98 }}
-      >
-       <Link to={ROUTES.ROLE_SELECTION}>
+      > <Link to={ROUTES.ROLE_SELECTION}>
+      
   Create Account
 </Link>
-      </motion.a>
+      </motion.div>
     </div>
   );
 }

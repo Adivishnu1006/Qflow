@@ -45,9 +45,12 @@ function RoleSelection() {
                 Join queues remotely, receive live updates and arrive only when its your turn.
               </p>
 
-              <button className="mt-8 w-full rounded-xl bg-blue-600 py-4 font-semibold text-white hover:bg-blue-700">
-                Continue as Customer
-              </button>
+             <Link
+  to={ROUTES.CUSTOMER_REGISTER}
+  className="mt-8 block w-full rounded-xl bg-blue-600 py-4 text-center font-semibold text-white transition hover:bg-blue-700"
+>
+  Continue as Customer
+</Link>
 
             </div>
 
@@ -69,9 +72,12 @@ function RoleSelection() {
                 Manage customers, queues, staff and analytics from one dashboard.
               </p>
 
-              <button className="mt-8 w-full rounded-xl bg-slate-900 py-4 font-semibold text-white hover:bg-slate-800">
-                Continue as Organization
-              </button>
+            <Link
+  to={ROUTES.ORGANIZATION_REGISTER}
+  className="mt-8 block w-full rounded-xl bg-slate-900 py-4 text-center font-semibold text-white transition hover:bg-slate-800"
+>
+  Continue as Organization
+</Link>
 
             </div>
 
@@ -85,13 +91,12 @@ function RoleSelection() {
 
               Already have an account?
 
-              <button className="ml-2 font-semibold text-blue-600 hover:underline">
-
-                  <Link to={ROUTES.LOGIN}>
+            <Link
+  to={ROUTES.LOGIN}
+  className="ml-2 font-semibold text-blue-600 hover:underline"
+>
   Sign In
 </Link>
-
-              </button>
 
             </p>
 

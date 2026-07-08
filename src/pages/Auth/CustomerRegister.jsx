@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
 
 import AuthCard from "@/components/UI/AuthCard";
 import Input from "@/components/UI/Input";
@@ -7,6 +7,7 @@ import Button from "@/components/UI/Button";
 import { ROUTES } from "@/routes/routes";
 
 function CustomerRegister() {
+   const navigate = useNavigate();
   return (
     <AuthCard
       title="Create Customer Account"
@@ -60,12 +61,13 @@ function CustomerRegister() {
           />
         </div>
 
-        <Button
-          fullWidth
-          size="lg"
-        >
-          Create Account
-        </Button>
+      <Button
+  fullWidth
+  size="lg"
+  onClick={() => navigate(ROUTES.CUSTOMER_HOME)}
+>
+  Create Account
+</Button>
 
       </div>
     </AuthCard>
