@@ -1,40 +1,64 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
+import { ROUTES } from "@/routes/routes";
 
 function AuthLayout() {
   return (
-    <section className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-100">
 
-      <div className="grid min-h-screen lg:grid-cols-2">
+      {/* Header */}
+      <header className="border-b bg-white shadow-sm">
+        <div className="mx-auto flex h-16 max-w-7xl items-center px-6">
 
-        {/* Left */}
+          <Link
+            to={ROUTES.HOME}
+            className="text-2xl font-bold text-blue-600"
+          >
+            QFlow
+          </Link>
 
-        <div className="hidden lg:flex items-center justify-center bg-blue-600 text-white">
+        </div>
+      </header>
 
-          <div className="max-w-md">
+      {/* Main Content */}
 
-            <h1 className="text-5xl font-bold">
-              Welcome to QFlow
-            </h1>
+      <main className="mx-auto flex min-h-[calc(100vh-64px)] max-w-7xl">
 
-            <p className="mt-6 text-lg opacity-90">
-              Skip the queue. Save your time.
+        {/* Left Branding Panel */}
+
+        <div className="hidden w-1/2 flex-col justify-center bg-blue-600 p-16 text-white lg:flex">
+
+          <h1 className="text-5xl font-bold leading-tight">
+            Skip the Waiting.
+          </h1>
+
+          <p className="mt-6 text-lg leading-8 text-blue-100">
+            Join queues remotely, monitor your token in real time,
+            and arrive exactly when your turn comes.
+          </p>
+
+          <div className="mt-12 rounded-2xl bg-blue-500/40 p-6">
+            <p className="text-xl font-semibold">
+              QFlow
             </p>
 
+            <p className="mt-2 text-blue-100">
+              Smart Queue Management Platform
+            </p>
           </div>
 
         </div>
 
-        {/* Right */}
+        {/* Right Form */}
 
-        <div className="flex items-center justify-center p-8">
+        <div className="flex flex-1 items-center justify-center p-8">
 
           <Outlet />
 
         </div>
 
-      </div>
+      </main>
 
-    </section>
+    </div>
   );
 }
 
