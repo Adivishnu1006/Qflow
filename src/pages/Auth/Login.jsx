@@ -99,6 +99,8 @@
 import AuthCard from "@/components/UI/AuthCard";
 import Input from "@/components/UI/Input";
 import Button from "@/components/UI/Button";
+import { Link } from "react-router-dom";
+import { ROUTES } from "@/routes/routes";
 
 function Login() {
   return (
@@ -109,7 +111,9 @@ function Login() {
         <p className="text-center text-sm text-slate-500">
           Don't have an account?{" "}
           <span className="font-semibold text-blue-600">
-            Create Account
+           <Link to={ROUTES.ROLE_SELECTION}>
+  Create Account
+</Link>
           </span>
         </p>
       }

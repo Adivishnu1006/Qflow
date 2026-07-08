@@ -1,5 +1,10 @@
-import PhoneMockup from '@/components/Landing/PhoneMockup/PhoneMockup.jsx';
+import PhoneMockup from "@/components/Landing/PhoneMockup/PhoneMockup";
+import { useNavigate } from "react-router-dom";
+import { ROUTES } from "@/routes/routes";
+
 function Hero() {
+  const navigate = useNavigate();
+
   const industries = [
     "Hospitals",
     "Banks",
@@ -30,19 +35,27 @@ function Hero() {
 
               <p className="text-lg leading-8 text-slate-600">
                 Join queues remotely, track your turn in real time,
-                and arrive exactly when youre needed.
+                and arrive exactly when you're needed.
               </p>
             </div>
 
             {/* Buttons */}
             <div className="flex flex-wrap gap-4">
-              <button className="rounded-xl bg-blue-600 px-7 py-4 font-semibold text-white shadow-lg transition hover:bg-blue-700">
+
+              <button
+                onClick={() => navigate(ROUTES.ROLE_SELECTION)}
+                className="rounded-xl bg-blue-600 px-7 py-4 font-semibold text-white shadow-lg transition hover:bg-blue-700"
+              >
                 Join Queue
               </button>
 
-              <button className="rounded-xl border border-slate-300 bg-white px-7 py-4 font-semibold text-slate-700 transition hover:border-blue-600 hover:bg-blue-50">
+              <button
+                onClick={() => navigate(ROUTES.ROLE_SELECTION)}
+                className="rounded-xl border border-slate-300 bg-white px-7 py-4 font-semibold text-slate-700 transition hover:border-blue-600 hover:bg-blue-50"
+              >
                 For Businesses
               </button>
+
             </div>
 
             {/* Industry Tags */}
@@ -62,10 +75,7 @@ function Hero() {
           {/* RIGHT CONTENT */}
           <div className="flex items-center justify-center">
             <div className="flex h-[620px] w-[340px] items-center justify-center rounded-[32px] border border-slate-200 bg-white shadow-xl">
-              <p className="text-center text-slate-500">
-                
-                <PhoneMockup />
-              </p>
+              <PhoneMockup />
             </div>
           </div>
 

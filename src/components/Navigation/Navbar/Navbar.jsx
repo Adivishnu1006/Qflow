@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { ROUTES } from "@/routes/routes";
 
 const navItems = [
   { label: 'Features', href: '#features' },
@@ -26,7 +28,9 @@ function Logo() {
       <span className="flex size-10 items-center justify-center rounded-full bg-blue-600 text-lg font-black tracking-normal text-white shadow-sm transition-transform duration-200 group-hover:scale-105">
         Q
       </span>
-      <span className="text-xl font-bold tracking-normal text-slate-950">QFlow</span>
+      <span className="text-xl font-bold tracking-normal text-slate-950"><Link to={ROUTES.HOME}>
+  QFlow
+</Link></span>
     </a>
   );
 }
@@ -66,7 +70,9 @@ function NavbarActions({ className = '' }) {
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.98 }}
       >
-        Sign In
+        <Link to={ROUTES.LOGIN}>
+  Sign In
+</Link>
       </motion.a>
       <motion.a
         href="#register-organization"
@@ -77,7 +83,9 @@ function NavbarActions({ className = '' }) {
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.98 }}
       >
-        Register Organization
+       <Link to={ROUTES.ROLE_SELECTION}>
+  Create Account
+</Link>
       </motion.a>
     </div>
   );

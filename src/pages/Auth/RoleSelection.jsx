@@ -1,4 +1,6 @@
 import { User, Building2 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ROUTES } from "@/routes/routes";
 
 function RoleSelection() {
   return (
@@ -85,7 +87,9 @@ function RoleSelection() {
 
               <button className="ml-2 font-semibold text-blue-600 hover:underline">
 
-                Sign In
+                  <Link to={ROUTES.LOGIN}>
+  Sign In
+</Link>
 
               </button>
 

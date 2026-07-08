@@ -7,14 +7,21 @@ import OrganizationLayout from "@/layouts/OrganizationLayout";
 
 import Landing from "@/pages/Landing/Landing";
 
+// Auth Pages
 import RoleSelection from "@/pages/Auth/RoleSelection";
 import Login from "@/pages/Auth/Login";
 import CustomerRegister from "@/pages/Auth/CustomerRegister";
 import OrganizationRegister from "@/pages/Auth/OrganizationRegister";
 import ForgotPassword from "@/pages/Auth/ForgotPassword";
 
-import CustomerDashboard from "@/pages/Customer/Dashboard";
+// Customer Pages
+import CustomerHome from "@/pages/Customer/Home";
+
+// Organization Pages
 import OrganizationDashboard from "@/pages/Organization/Dashboard";
+
+// Error Page
+import NotFound from "@/pages/NotFound";
 
 import { ROUTES } from "./routes";
 
@@ -22,21 +29,20 @@ function AppRoutes() {
   return (
     <Routes>
 
-      {/* Public */}
-
+      {/* ========================= */}
+      {/* Public Routes */}
+      {/* ========================= */}
       <Route element={<PublicLayout />}>
-
         <Route
           path={ROUTES.HOME}
           element={<Landing />}
         />
-
       </Route>
 
-      {/* Auth */}
-
+      {/* ========================= */}
+      {/* Authentication Routes */}
+      {/* ========================= */}
       <Route element={<AuthLayout />}>
-
         <Route
           path={ROUTES.ROLE_SELECTION}
           element={<RoleSelection />}
@@ -61,30 +67,35 @@ function AppRoutes() {
           path={ROUTES.FORGOT_PASSWORD}
           element={<ForgotPassword />}
         />
-
       </Route>
 
-      {/* Customer */}
-
+      {/* ========================= */}
+      {/* Customer Routes */}
+      {/* ========================= */}
       <Route element={<CustomerLayout />}>
-
         <Route
-          path={ROUTES.CUSTOMER_DASHBOARD}
-          element={<CustomerDashboard />}
+          path={ROUTES.CUSTOMER_HOME}
+          element={<CustomerHome />}
         />
-
       </Route>
 
-      {/* Organization */}
-
+      {/* ========================= */}
+      {/* Organization Routes */}
+      {/* ========================= */}
       <Route element={<OrganizationLayout />}>
-
         <Route
           path={ROUTES.ORGANIZATION_DASHBOARD}
           element={<OrganizationDashboard />}
         />
-
       </Route>
+
+      {/* ========================= */}
+      {/* 404 Page */}
+      {/* ========================= */}
+      <Route
+        path="*"
+        element={<NotFound />}
+      />
 
     </Routes>
   );

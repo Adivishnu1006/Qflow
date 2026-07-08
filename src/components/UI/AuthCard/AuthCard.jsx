@@ -10,7 +10,6 @@ function AuthCard({
     <Card className="w-full max-w-md">
 
       <div className="mb-8">
-
         <h1 className="text-3xl font-bold text-slate-900">
           {title}
         </h1>
@@ -20,7 +19,6 @@ function AuthCard({
             {subtitle}
           </p>
         )}
-
       </div>
 
       <div className="space-y-6">
