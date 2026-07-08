@@ -1,0 +1,809 @@
+Absolutely. This is actually a great point to stop. You've built enough that another developer can understand the project and start contributing without asking a hundred questions.
+
+---
+
+# QFlow - Sprint 1 Summary (Frontend Foundation)
+
+## Project Goal
+
+QFlow is a digital queue management platform that allows customers to join queues remotely and organizations to manage their queues digitally.
+
+There are **two user types**:
+
+* 👤 Customer
+* 🏢 Organization
+
+Both use the same application but have different dashboards after authentication.
+
+---
+
+# Architecture
+
+```
+React 19
+│
+├── React Router
+├── Tailwind CSS
+├── Framer Motion
+├── Reusable UI Components
+└── Layout-based Routing
+```
+
+---
+
+# Folder Structure
+
+```
+src
+│
+├── components
+│   ├── Landing
+│   ├── Navigation
+│   └── UI
+│       ├── Button
+│       ├── Input
+│       ├── Card
+│       └── AuthCard
+│
+├── layouts
+│   ├── PublicLayout
+│   ├── AuthLayout
+│   ├── CustomerLayout
+│   └── OrganizationLayout
+│
+├── pages
+│   ├── Landing
+│   ├── Auth
+│   ├── Customer
+│   ├── Organization
+│   └── NotFound
+│
+├── routes
+│
+├── constants
+│
+└── utils
+```
+
+---
+
+# Routing Architecture
+
+```
+Public Layout
+
+/
+│
+└── Landing
+```
+
+---
+
+```
+Auth Layout
+
+/auth/role
+
+/auth/login
+
+/auth/customer-register
+
+/auth/organization-register
+
+/auth/forgot-password
+```
+
+---
+
+```
+Customer Layout
+
+/customer/home
+```
+
+---
+
+```
+Organization Layout
+
+/organization/dashboard
+```
+
+---
+
+```
+404
+
+*
+```
+
+---
+
+# How Layouts Work
+
+Each layout acts like a reusable page template.
+
+Example
+
+```
+AuthLayout
+
+Header
+
+↓
+
+Blue Branding Panel
+
+↓
+
+<Outlet />
+
+↓
+
+Login
+
+OR
+
+Customer Register
+
+OR
+
+Organization Register
+```
+
+Only the `<Outlet />` changes.
+
+Everything else stays consistent.
+
+---
+
+# Current Navigation Flow
+
+```
+Landing
+```
+
+↓
+
+Navbar
+
+```
+Logo
+
+↓
+
+Landing
+```
+
+```
+Sign In
+
+↓
+
+Login
+```
+
+```
+Create Account
+
+↓
+
+Role Selection
+```
+
+---
+
+Hero
+
+```
+Join Queue
+
+↓
+
+Role Selection
+```
+
+```
+For Businesses
+
+↓
+
+Role Selection
+```
+
+---
+
+# Role Selection Flow
+
+```
+Customer
+
+↓
+
+Customer Register
+```
+
+```
+Organization
+
+↓
+
+Organization Register
+```
+
+---
+
+# Customer Registration Flow
+
+```
+Customer Register
+
+↓
+
+Create Account
+
+↓
+
+Customer Home
+```
+
+Footer
+
+```
+Already have account
+
+↓
+
+Login
+```
+
+---
+
+# Organization Registration Flow
+
+```
+Organization Register
+
+↓
+
+Create Organization
+
+↓
+
+Organization Dashboard
+```
+
+Footer
+
+```
+Already have account
+
+↓
+
+Login
+```
+
+---
+
+# Login Flow (Current)
+
+Current login is a placeholder.
+
+```
+Email
+
+Password
+
+↓
+
+Sign In
+
+↓
+
+Customer Home
+```
+
+Later
+
+```
+Frontend
+
+↓
+
+POST /login
+
+↓
+
+Backend
+
+↓
+
+JWT
+
+↓
+
+Role
+
+↓
+
+Redirect
+
+↓
+
+Customer Home
+
+OR
+
+Organization Dashboard
+```
+
+---
+
+# Authentication Logic (Future)
+
+Backend decides where to redirect.
+
+Example
+
+```
+User
+
+↓
+
+Login
+
+↓
+
+Backend verifies credentials
+
+↓
+
+Returns
+
+{
+    token,
+    role
+}
+```
+
+Frontend
+
+```
+if(role==="customer")
+
+↓
+
+Customer Home
+
+else
+
+↓
+
+Organization Dashboard
+```
+
+No separate login pages.
+
+No role selection during login.
+
+Backend is the source of truth.
+
+---
+
+# Reusable Components Built
+
+```
+Button
+
+Input
+
+Card
+
+AuthCard
+```
+
+Every authentication page is built using these components.
+
+This keeps the UI consistent.
+
+---
+
+# Layouts
+
+## PublicLayout
+
+Contains
+
+```
+Navbar
+
+↓
+
+Landing Page
+```
+
+---
+
+## AuthLayout
+
+Contains
+
+```
+Header
+
+↓
+
+Blue Branding Panel
+
+↓
+
+Outlet
+```
+
+---
+
+## CustomerLayout
+
+Contains
+
+```
+Header
+
+↓
+
+Outlet
+
+↓
+
+Customer Pages
+```
+
+---
+
+## OrganizationLayout
+
+Contains
+
+```
+Header
+
+↓
+
+Outlet
+
+↓
+
+Organization Pages
+```
+
+---
+
+# Customer Home
+
+Current placeholder
+
+```
+Welcome
+
+↓
+
+Search Organizations
+
+↓
+
+Coming Soon
+
+↓
+
+Logout
+```
+
+---
+
+# Organization Dashboard
+
+Current placeholder
+
+```
+Welcome
+
+↓
+
+Today's Queue
+
+↓
+
+Coming Soon
+
+↓
+
+Logout
+```
+
+---
+
+# UX Decisions
+
+### Single Login Page
+
+No separate login for customer and organization.
+
+Backend redirects based on authenticated user's role.
+
+---
+
+### Single Landing Page
+
+Everyone starts from the same landing page.
+
+---
+
+### Role Selection Only During Registration
+
+```
+Landing
+
+↓
+
+Role Selection
+
+↓
+
+Customer Register
+
+OR
+
+Organization Register
+```
+
+---
+
+### Logo Visible Everywhere
+
+Every layout contains the QFlow logo.
+
+Clicking it returns the user to the Landing page.
+
+No dependence on the browser Back button.
+
+---
+
+# Git Workflow
+
+Feature development happens on separate branches.
+
+Typical workflow
+
+```
+git checkout -b feature/auth-workflow
+
+↓
+
+Develop
+
+↓
+
+Commit
+
+↓
+
+Push
+
+↓
+
+Merge into main
+```
+
+---
+
+# Current Development Status
+
+## Completed
+
+```
+Project Setup
+
+Folder Structure
+
+React Router
+
+Layouts
+
+Reusable UI Components
+
+Landing Page
+
+Role Selection
+
+Customer Registration
+
+Organization Registration
+
+Placeholder Login
+
+Customer Home
+
+Organization Dashboard
+
+Navigation
+
+Git Workflow
+```
+
+---
+
+## Pending
+
+```
+Authentication API
+
+JWT
+
+Protected Routes
+
+Form Validation
+
+Toast Messages
+
+Responsive Polish
+
+UI Improvements
+
+Animations
+```
+
+---
+
+# Sprint 2 Roadmap
+
+```
+Customer Home
+
+↓
+
+Search Organizations
+
+↓
+
+Filters
+
+↓
+
+Organization Cards
+
+↓
+
+Organization Details
+
+↓
+
+Join Queue
+
+↓
+
+Live Queue
+
+↓
+
+Notifications
+```
+
+---
+
+# Sprint 3
+
+Backend Integration
+
+```
+Register API
+
+Login API
+
+JWT
+
+Protected Routes
+
+Axios
+
+Auth Context
+```
+
+---
+
+# Sprint 4
+
+Queue Management
+
+```
+Organization Dashboard
+
+↓
+
+Create Queue
+
+↓
+
+Manage Queue
+
+↓
+
+Serve Customer
+
+↓
+
+Skip Customer
+
+↓
+
+Complete Queue
+```
+
+---
+
+# Sprint 5
+
+Real-Time Features
+
+```
+WebSockets
+
+↓
+
+Live Queue Updates
+
+↓
+
+Notifications
+
+↓
+
+Real-Time Token Changes
+```
+
+---
+
+# Overall Progress
+
+```
+Architecture               ██████████ 100%
+
+Folder Structure           ██████████ 100%
+
+Routing                    ██████████ 100%
+
+Reusable Components        ██████████ 100%
+
+Authentication UI          █████████░ 90%
+
+Landing Page               ██████████ 100%
+
+Customer Flow              ████████░░ 80%
+
+Organization Flow          ████████░░ 80%
+
+Backend                    ░░░░░░░░░░ 0%
+
+Queue Management           ░░░░░░░░░░ 0%
+
+Live Updates               ░░░░░░░░░░ 0%
+```
+
+---
+
+# Notes for Backend Developer
+
+1. **Do not change route names** (`ROUTES` constants are considered stable).
+2. Registration pages are complete from a UI perspective; wire them to the register APIs.
+3. Login UI is complete; replace the temporary navigation with the real login API call.
+4. Backend should return the authenticated user's role (customer or organization), and the frontend will redirect to the correct dashboard.
+5. Layouts (`PublicLayout`, `AuthLayout`, `CustomerLayout`, `OrganizationLayout`) are shared wrappers. Pages render inside them through React Router's `<Outlet />`.
+6. The next shared milestone is implementing:
+
+   * `POST /auth/customer-register`
+   * `POST /auth/organization-register`
+   * `POST /auth/login`
+   * JWT storage
+   * Protected routes
+
+---
+
